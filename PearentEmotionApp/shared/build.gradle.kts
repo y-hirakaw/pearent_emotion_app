@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     id("co.touchlab.skie") version "0.8.3"
+    id("io.realm.kotlin") version "2.1.0"
 }
 
 kotlin {
@@ -29,6 +30,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
+            implementation("io.realm.kotlin:library-base:2.1.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
         }
     }
 }
