@@ -10,6 +10,8 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		66D895762C6394C000529CCA /* AddEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D895752C6394C000529CCA /* AddEmotionView.swift */; };
+		66D8957A2C63956600529CCA /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D895792C63956600529CCA /* Emotion.swift */; };
 		66DF71572C5A6B23005A216A /* EmotionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF71562C5A6B23005A216A /* EmotionListView.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
@@ -18,6 +20,8 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		66D895752C6394C000529CCA /* AddEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmotionView.swift; sourceTree = "<group>"; };
+		66D895792C63956600529CCA /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		66DF71562C5A6B23005A216A /* EmotionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionListView.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* PearentEmotionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PearentEmotionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,19 +55,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		66D895772C63953900529CCA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				66D895792C63956600529CCA /* Emotion.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		66D895782C63954200529CCA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66DF71532C5A6A90005A216A /* EmotionList */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		66DF71532C5A6A90005A216A /* EmotionList */ = {
 			isa = PBXGroup;
 			children = (
 				66DF71562C5A6B23005A216A /* EmotionListView.swift */,
+				66D895752C6394C000529CCA /* AddEmotionView.swift */,
 			);
 			path = EmotionList;
-			sourceTree = "<group>";
-		};
-		66DF71542C5A6AAD005A216A /* Emotion */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Emotion;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
@@ -87,8 +101,8 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				66DF71532C5A6A90005A216A /* EmotionList */,
-				66DF71542C5A6AAD005A216A /* Emotion */,
+				66D895772C63953900529CCA /* Model */,
+				66D895782C63954200529CCA /* View */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
@@ -137,7 +151,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = orgName;
 				TargetAttributes = {
 					7555FF7A242A565900829871 = {
@@ -204,7 +218,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				66D8957A2C63956600529CCA /* Emotion.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				66D895762C6394C000529CCA /* AddEmotionView.swift in Sources */,
 				66DF71572C5A6B23005A216A /* EmotionListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +233,7 @@
 			baseConfigurationReference = AB3632DC29227652001CCB65 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -280,6 +297,7 @@
 			baseConfigurationReference = AB3632DC29227652001CCB65 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -339,7 +357,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = "${TEAM_ID}";
+				DEVELOPMENT_TEAM = 83C8G2PSSU;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -366,7 +384,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = "${TEAM_ID}";
+				DEVELOPMENT_TEAM = 83C8G2PSSU;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
