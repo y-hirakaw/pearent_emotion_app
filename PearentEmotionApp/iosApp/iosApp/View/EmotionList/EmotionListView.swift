@@ -5,12 +5,13 @@ class EmotionStore: ObservableObject {
 
     func addEmotion(title: String) {
         let newItem = Emotion(
-            title: title,
             type: .anger,
             childBehavior: "",
             myBehavior: "",
             relatedContext: .past,
-            relatedDetail: ""
+            relatedDetail: "",
+            title: title,
+            date: Date()
         )
         emotions.append(newItem)
     }
@@ -23,7 +24,23 @@ struct EmotionListView: View {
         NavigationView {
             VStack {
                 List(emotionStore.emotions) { item in
-                    Text(item.title)
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack {
+                            Text(item.date, style: .date)
+                                .font(.headline)
+                            Text(item.type.name)
+                                .font(.headline)
+                            Text(item.relatedContext.description)
+                                .font(.headline)
+                        }
+                        Text("子供: " + item.childBehavior.prefix(10) + "...")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                        Text("自分: " + item.myBehavior.prefix(10) + "...")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.vertical, 4)
                 }
 
                 NavigationLink(destination: AddEmotionView(emotionStore: emotionStore)) {
