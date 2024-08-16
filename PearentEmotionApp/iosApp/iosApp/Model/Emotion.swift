@@ -90,4 +90,19 @@ enum EmotionType: Int, CaseIterable, Identifiable {
         case .jealousy: return "自分が過去に持っていなかったものを子供が持っているときに感じる嫉妬。"
         }
     }
+
+    var emoji: String {
+        switch self {
+        case .anger: return "😡"
+        case .frustration: return "😖"
+        case .fear: return "😨"
+        case .guilt: return "😔"
+        case .sadness: return "😢"
+        case .disappointment: return "😞"
+        case .helplessness: return "😩"
+        case .shame: return "😳"
+        case .defensiveness: return "😤"
+        case .jealousy: return "😒"
+        }
+    }
 }

@@ -3,17 +3,8 @@ import SwiftUI
 class EmotionStore: ObservableObject {
     @Published var emotions: [Emotion] = []
 
-    func addEmotion(title: String) {
-        let newItem = Emotion(
-            type: .anger,
-            childBehavior: "",
-            myBehavior: "",
-            relatedContext: .past,
-            relatedDetail: "",
-            title: title,
-            date: Date()
-        )
-        emotions.append(newItem)
+    func addEmotion(emotion: Emotion) {
+        emotions.append(emotion)
     }
 }
 
