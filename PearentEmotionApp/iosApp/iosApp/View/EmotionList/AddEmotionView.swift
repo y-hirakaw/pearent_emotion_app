@@ -1,4 +1,5 @@
 import SwiftUI
+import Shared
 
 struct AddEmotionView: View {
     @ObservedObject var emotionStore: EmotionStore
@@ -11,9 +12,10 @@ struct AddEmotionView: View {
     @State private var title: String = ""
     @State private var date: Date = Date()
     @State private var isDetailInputVisible: Bool = false
+    private let edgeInsets = EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
 
     let columns = [
-        GridItem(.adaptive(minimum: 50))
+        GridItem(.adaptive(minimum: 44))
     ]
 
     var body: some View {
@@ -37,18 +39,29 @@ struct AddEmotionView: View {
                             .frame(width: 50, height: 50)      // クリック領域を制限
                         }
                     }
-                    Text(selectedEmotion.name + ": " + selectedEmotion.description)
+                    Text(
+                        "【" + selectedEmotion.title + "】" + selectedEmotion.detailText
+                    )
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
+                .listRowInsets(
+                    edgeInsets
+                )
 
                 Section(header: Text("子供の行動")) {
                     AutoSizingTextEditor(text: $childBehavior)
                 }
+                .listRowInsets(
+                    edgeInsets
+                )
 
                 Section(header: Text("自分の行動")) {
                     AutoSizingTextEditor(text: $myBehavior)
                 }
+                .listRowInsets(
+                    edgeInsets
+                )
 
                 Section(header: Text("感情は何に関連するか")) {
                     Picker("関連", selection: $relatedContext) {
@@ -58,6 +71,9 @@ struct AddEmotionView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
+                .listRowInsets(
+                    edgeInsets
+                )
 
                 Section {
                     Button(action: {
@@ -88,19 +104,30 @@ struct AddEmotionView: View {
                         .cornerRadius(10)
                     }
                 }
+                .listRowInsets(
+                    edgeInsets
+                )
             }
             .navigationTitle("感情追加")
             .navigationBarItems(
             trailing: Button("入力完了") {
-                let emotion = Emotion(
-                    type: selectedEmotion,
-                    childBehavior: childBehavior,
-                    myBehavior: myBehavior,
-                    relatedContext: relatedContext,
-                    relatedDetail: relatedDetail,
-                    title: title,
-                    date: date
-                )
+                let emotion = Emotion()
+                emotion.type = selectedEmotion.id
+                emotion.childBehavior = childBehavior
+                emotion.myBehavior = myBehavior
+                emotion.relatedContext = relatedContext.id
+                emotion.relatedDetail = relatedDetail
+                emotion.title = title
+                emotion.date = Int64(date.timeIntervalSince1970)
+//                let emotion = Emotion(
+//                    type: selectedEmotion.id,
+//                    childBehavior: childBehavior,
+//                    myBehavior: myBehavior,
+//                    relatedContext: relatedContext.id,
+//                    relatedDetail: relatedDetail,
+//                    title: title,
+//                    date: date.timeIntervalSince1970
+//                )
                 self.emotionStore.addEmotion(emotion: emotion)
                 presentationMode.wrappedValue.dismiss()
             })

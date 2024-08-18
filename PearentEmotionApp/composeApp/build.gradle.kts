@@ -69,6 +69,8 @@ android {
     }
     dependencies {
         debugImplementation(compose.uiTooling)
+        compileOnly("io.realm.kotlin:library-base:2.1.0")
+        compileOnly("io.realm.kotlin:library-sync:2.1.0")
     }
 }
 

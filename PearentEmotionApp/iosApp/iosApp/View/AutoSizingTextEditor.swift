@@ -17,7 +17,7 @@ struct AutoSizingTextEditor: View {
     var body: some View {
         TextEditor(text: $text)
             .frame(height: dynamicHeight)
-            .background(Color.gray.opacity(0.1))
+            .background(Color.gray.opacity(0.05))
             .cornerRadius(8)
             .onChange(of: text) { _ in
                 adjustTextEditorHeight()

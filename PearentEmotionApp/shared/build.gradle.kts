@@ -31,7 +31,9 @@ kotlin {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
             implementation("io.realm.kotlin:library-base:2.1.0")
+            implementation("io.realm.kotlin:library-sync:2.1.0")
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
         }
     }
 }
