@@ -1,23 +1,13 @@
 package Emotion
 
-import io.realm.kotlin.types.RealmAny
 import io.realm.kotlin.types.RealmObject
+import io.realm.kotlin.types.RealmUUID
 import io.realm.kotlin.types.annotations.PrimaryKey
 import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.format.DateTimeComponents
-import kotlinx.datetime.format.DateTimeFormat
-import kotlinx.datetime.format.FormatStringsInDatetimeFormats
-import kotlinx.datetime.format.Padding
-import kotlinx.datetime.format.byUnicodePattern
-import kotlinx.datetime.format.char
-import kotlinx.datetime.toLocalDateTime
 
 open class Emotion: RealmObject {
     @PrimaryKey
-    var id: String = RealmAny.Type.UUID.toString()
+    var id: String = RealmUUID.random().toString()
     var type: Int = EmotionType.ANGER.id
     var childBehavior: String = ""
     var myBehavior: String = ""

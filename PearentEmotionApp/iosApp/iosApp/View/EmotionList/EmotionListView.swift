@@ -1,21 +1,14 @@
 import SwiftUI
 import Shared
 
-class EmotionStore: ObservableObject {
-    @Published var emotions: [Emotion] = []
-
-    func addEmotion(emotion: Emotion) {
-        emotions.append(emotion)
-    }
-}
-
 struct EmotionListView: View {
-    @StateObject var emotionStore = EmotionStore()
+    @StateObject private var viewModel = EmotionViewModel()
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                List(emotionStore.emotions, id: \.id) { item in
+                List(viewModel.emotions, id: \.id) { item in
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
                             let date = Date(
@@ -39,7 +32,7 @@ struct EmotionListView: View {
                     .padding(.vertical, 4)
                 }
 
-                NavigationLink(destination: AddEmotionView(emotionStore: emotionStore)) {
+                NavigationLink(destination: AddEmotionView()) {
                     Text("感情を追加")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -51,6 +44,12 @@ struct EmotionListView: View {
             }
             .navigationTitle("一覧")
         }
+        .onAppear() {
+            // TODO: これだけでは戻った時に更新できない
+            Task {
+                await viewModel.fetchEmotions()
+            }
+        }
     }
 
     func stringFromDate(date: Date, format: String) -> String {
@@ -58,6 +57,19 @@ struct EmotionListView: View {
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.dateFormat = format
         return formatter.string(from: date)
+    }
+}
+
+class EmotionViewModel: ObservableObject {
+    private let dataSource = EmotionDataSource()
+
+    @Published var emotions: [Emotion] = []
+
+    func fetchEmotions() async {
+        let emotions = dataSource.getAllEmotions()
+        DispatchQueue.main.async {
+            self.emotions = emotions
+        }
     }
 }
 

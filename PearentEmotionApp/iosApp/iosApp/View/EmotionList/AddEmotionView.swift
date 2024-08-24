@@ -2,7 +2,7 @@ import SwiftUI
 import Shared
 
 struct AddEmotionView: View {
-    @ObservedObject var emotionStore: EmotionStore
+    private let dataSource = EmotionDataSource()
     @Environment(\.presentationMode) var presentationMode
     @State private var selectedEmotion: EmotionType = .anger
     @State private var childBehavior: String = ""
@@ -19,7 +19,7 @@ struct AddEmotionView: View {
     ]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(header: Text("感情")) {
                     LazyVGrid(columns: columns) {
@@ -119,17 +119,15 @@ struct AddEmotionView: View {
                 emotion.relatedDetail = relatedDetail
                 emotion.title = title
                 emotion.date = Int64(date.timeIntervalSince1970)
-//                let emotion = Emotion(
-//                    type: selectedEmotion.id,
-//                    childBehavior: childBehavior,
-//                    myBehavior: myBehavior,
-//                    relatedContext: relatedContext.id,
-//                    relatedDetail: relatedDetail,
-//                    title: title,
-//                    date: date.timeIntervalSince1970
-//                )
-                self.emotionStore.addEmotion(emotion: emotion)
-                presentationMode.wrappedValue.dismiss()
+                Task {
+                    do {
+                        try await dataSource.addEmotion(emotion: emotion)
+                        presentationMode.wrappedValue.dismiss()
+                    } catch {
+                        // TODO: 失敗時の動作
+                    }
+
+                }
             })
         }
     }
