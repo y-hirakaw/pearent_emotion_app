@@ -32,7 +32,7 @@ struct EmotionListView: View {
                     .padding(.vertical, 4)
                 }
 
-                NavigationLink(destination: AddEmotionView()) {
+                NavigationLink(destination: AddEmotionView(viewModel: viewModel)) {
                     Text("感情を追加")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -45,7 +45,6 @@ struct EmotionListView: View {
             .navigationTitle("一覧")
         }
         .onAppear() {
-            // TODO: これだけでは戻った時に更新できない
             Task {
                 await viewModel.fetchEmotions()
             }
@@ -70,6 +69,10 @@ class EmotionViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.emotions = emotions
         }
+    }
+
+    func addEmotion(_ emotion: Emotion) async throws {
+        try await dataSource.addEmotion(emotion: emotion)
     }
 }
 

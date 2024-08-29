@@ -2,7 +2,7 @@ import SwiftUI
 import Shared
 
 struct AddEmotionView: View {
-    private let dataSource = EmotionDataSource()
+    @ObservedObject var viewModel: EmotionViewModel
     @Environment(\.presentationMode) var presentationMode
     @State private var selectedEmotion: EmotionType = .anger
     @State private var childBehavior: String = ""
@@ -121,7 +121,8 @@ struct AddEmotionView: View {
                 emotion.date = Int64(date.timeIntervalSince1970)
                 Task {
                     do {
-                        try await dataSource.addEmotion(emotion: emotion)
+                        try await viewModel.addEmotion(emotion)
+                        await viewModel.fetchEmotions()
                         presentationMode.wrappedValue.dismiss()
                     } catch {
                         // TODO: 失敗時の動作
