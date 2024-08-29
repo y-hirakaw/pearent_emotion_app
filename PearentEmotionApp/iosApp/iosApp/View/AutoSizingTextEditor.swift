@@ -19,7 +19,7 @@ struct AutoSizingTextEditor: View {
             .frame(height: dynamicHeight)
             .background(Color.gray.opacity(0.05))
             .cornerRadius(8)
-            .onChange(of: text) { _ in
+            .onChange(of: text) {
                 adjustTextEditorHeight()
             }
     }
