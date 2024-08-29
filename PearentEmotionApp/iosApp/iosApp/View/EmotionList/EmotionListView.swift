@@ -22,12 +22,17 @@ struct EmotionListView: View {
 //                            Text(item.relatedContext.title)
 //                                .font(.headline)
                         }
-                        Text("子供: " + item.childBehavior.prefix(10) + "...")
+                        Text("子供: " + item.childBehavior)
                             .font(.subheadline)
                             .foregroundColor(.gray)
-                        Text("自分: " + item.myBehavior.prefix(10) + "...")
+                            .lineLimit(1)  // 1行に制限
+                            .truncationMode(.tail)  // はみ出した場合、末尾に省略記号を表示
+
+                        Text("自分: " + item.myBehavior)
                             .font(.subheadline)
                             .foregroundColor(.gray)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
                     }
                     .padding(.vertical, 4)
                 }
