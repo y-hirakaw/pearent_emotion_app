@@ -4,6 +4,7 @@ import Shared
 struct EmotionListView: View {
     @StateObject private var viewModel = EmotionViewModel()
     @Environment(\.scenePhase) private var scenePhase
+    @State private var selectedEmotion: Emotion?
 
     var body: some View {
         NavigationStack {
@@ -35,6 +36,9 @@ struct EmotionListView: View {
                             .truncationMode(.tail)
                     }
                     .padding(.vertical, 4)
+                    .onTapGesture {
+                        selectedEmotion = item
+                    }
                 }
 
                 NavigationLink(destination: AddEmotionView(viewModel: viewModel)) {
@@ -48,6 +52,9 @@ struct EmotionListView: View {
                 }
             }
             .navigationTitle("一覧")
+            .sheet(item: $selectedEmotion) { emotion in
+                EmotionDetailView(viewModel: viewModel, emotion: .constant(emotion))
+            }
         }
         .onAppear() {
             Task {

@@ -7,13 +7,13 @@ import kotlinx.datetime.Clock
 
 open class Emotion: RealmObject {
     @PrimaryKey
-    var id: String = RealmUUID.random().toString()
+    var emotionId: String = RealmUUID.random().toString()
     var type: Int = EmotionType.ANGER.id
     var childBehavior: String = ""
     var myBehavior: String = ""
     var relatedContext: Int = RelatedContext.PAST.id
-    var relatedDetail: String? = null
-    var title: String? = null
+    var relatedDetail: String = ""
+    var title: String = ""
     var date: Long = Clock.System.now().toEpochMilliseconds()
 }
 

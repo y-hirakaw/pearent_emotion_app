@@ -13,6 +13,8 @@
 		66D895762C6394C000529CCA /* AddEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D895752C6394C000529CCA /* AddEmotionView.swift */; };
 		66D8957A2C63956600529CCA /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D895792C63956600529CCA /* Emotion.swift */; };
 		66DF71572C5A6B23005A216A /* EmotionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF71562C5A6B23005A216A /* EmotionListView.swift */; };
+		66E877702C81F1B600C1694F /* EmotionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8776F2C81F1B600C1694F /* EmotionDetailView.swift */; };
+		66E877762C81F40700C1694F /* Emotion+Identifirble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E877752C81F40500C1694F /* Emotion+Identifirble.swift */; };
 		66F9736B2C6F8A7A00B695FF /* AutoSizingTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F9736A2C6F8A7A00B695FF /* AutoSizingTextEditor.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,8 @@
 		66D895752C6394C000529CCA /* AddEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmotionView.swift; sourceTree = "<group>"; };
 		66D895792C63956600529CCA /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		66DF71562C5A6B23005A216A /* EmotionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionListView.swift; sourceTree = "<group>"; };
+		66E8776F2C81F1B600C1694F /* EmotionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionDetailView.swift; sourceTree = "<group>"; };
+		66E877752C81F40500C1694F /* Emotion+Identifirble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Emotion+Identifirble.swift"; sourceTree = "<group>"; };
 		66F9736A2C6F8A7A00B695FF /* AutoSizingTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingTextEditor.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* 親の感情ノート.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "親の感情ノート.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		66D895772C63953900529CCA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				66E877752C81F40500C1694F /* Emotion+Identifirble.swift */,
 				66D895792C63956600529CCA /* Emotion.swift */,
 			);
 			path = Model;
@@ -77,6 +82,7 @@
 		66DF71532C5A6A90005A216A /* EmotionList */ = {
 			isa = PBXGroup;
 			children = (
+				66E8776F2C81F1B600C1694F /* EmotionDetailView.swift */,
 				66DF71562C5A6B23005A216A /* EmotionListView.swift */,
 				66D895752C6394C000529CCA /* AddEmotionView.swift */,
 			);
@@ -221,8 +227,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				66E877702C81F1B600C1694F /* EmotionDetailView.swift in Sources */,
 				66D8957A2C63956600529CCA /* Emotion.swift in Sources */,
 				66F9736B2C6F8A7A00B695FF /* AutoSizingTextEditor.swift in Sources */,
+				66E877762C81F40700C1694F /* Emotion+Identifirble.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				66D895762C6394C000529CCA /* AddEmotionView.swift in Sources */,
 				66DF71572C5A6B23005A216A /* EmotionListView.swift in Sources */,
