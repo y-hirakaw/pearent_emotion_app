@@ -6,6 +6,7 @@ struct EmotionDetailView: View {
     @Binding var emotion: Emotion
     @Environment(\.presentationMode) var presentationMode
 
+    // TODO: Bindingしてしまうと、Realmをスレッドセーフでは無い状態で編集することになってしまうので、表示、編集と更新は別にする
     var body: some View {
         Form {
             Section(header: Text("感情の種類")) {
