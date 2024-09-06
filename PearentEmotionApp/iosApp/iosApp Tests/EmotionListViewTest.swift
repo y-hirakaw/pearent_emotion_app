@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import 親の感情ノート
+@testable import PearentEmotionApp
 
 struct EmotionListViewTest {
 

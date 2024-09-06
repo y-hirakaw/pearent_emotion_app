@@ -41,7 +41,7 @@ struct EmotionListView: View {
                     }
                 }
 
-                NavigationLink(destination: AddEmotionView(viewModel: viewModel)) {
+                NavigationLink(destination: EmotionView(viewModel: viewModel, emotion: nil)) {
                     Text("感情を追加")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -53,7 +53,8 @@ struct EmotionListView: View {
             }
             .navigationTitle("一覧")
             .sheet(item: $selectedEmotion) { emotion in
-                EmotionDetailView(viewModel: viewModel, emotion: .constant(emotion))
+                EmotionView(viewModel: viewModel, emotion: emotion)
+//                EmotionDetailView(viewModel: viewModel, emotion: .constant(emotion))
             }
         }
         .onAppear() {
@@ -85,6 +86,26 @@ class EmotionViewModel: ObservableObject {
 
     func addEmotion(_ emotion: Emotion) async throws {
         try await dataSource.addEmotion(emotion: emotion)
+    }
+
+    func updateEmotion(_ emotionModel: EmotionModel) async throws {
+        let emotion = Emotion()
+        emotion.type = Int32(emotionModel.type.hashValue)
+        emotion.childBehavior = emotionModel.childBehavior
+        emotion.myBehavior = emotionModel.myBehavior
+        emotion.relatedContext = Int32(emotionModel.relatedContext.hashValue)
+        emotion.relatedDetail = emotionModel.relatedDetail
+        emotion.title = emotionModel.title
+        emotion.date = Int64(emotionModel.date.timeIntervalSince1970)
+        Task {
+            do {
+                try await addEmotion(emotion)
+                await fetchEmotions()
+            } catch {
+                // TODO: 失敗時の動作
+            }
+
+        }
     }
 }
 
